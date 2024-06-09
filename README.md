@@ -14,13 +14,13 @@
 ### 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/paelsam/domesticApp
+git clone https://github.com/paelsam/DomesticApp
 ```
 
 ### 2. Instalar dependencias
 
 ```bash
-cd domesticApp
+cd DomesticApp
 npm install
 ```
 
