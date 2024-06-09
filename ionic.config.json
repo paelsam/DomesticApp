@@ -1,0 +1,7 @@
+{
+  "name": "domesticApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
