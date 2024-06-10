@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { Error404Component } from './shared/pages/error404/error404.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,14 @@ const routes: Routes = [
     path: 'worker',
     loadChildren: () => import('./worker/worker.module').then( m => m.WorkerPageModule)
   },
+  // {
+  //   path: '404',
+  //   component: Error404Component
+  // },
+  // {
+  //   path: '**',
+  //   redirectTo: '404'
+  // }
 ];
 
 @NgModule({
