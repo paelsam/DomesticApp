@@ -1,13 +1,23 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>admin</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="solicitudes" href="/admin/solicitudes">
+      <ion-icon aria-hidden="true" name="list"></ion-icon>
+      <ion-label>Solicitudes</ion-label>
+    </ion-tab-button>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">admin</ion-title>
-    </ion-toolbar>
-  </ion-header>
-</ion-content>
+    <ion-tab-button tab="usuarios" href="/admin/usuarios">
+      <ion-icon aria-hidden="true" name="people-outline"></ion-icon>
+      <ion-label>Usuarios</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="mapa" href="/admin/mapa">
+      <ion-icon aria-hidden="true" name="map"></ion-icon>
+      <ion-label>Mapa</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="cuenta" href="/admin/cuenta">
+      <ion-icon aria-hidden="true" name="person"></ion-icon>
+      <ion-label>Cuenta</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>
