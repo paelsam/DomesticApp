@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
+import { NgModule, importProvidersFrom } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -10,17 +10,27 @@ import { AuthenticationPage } from './authentication.page';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { SharedPageModule } from '../shared/shared.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
 
 
 @NgModule({
+  providers: [
+    importProvidersFrom(HttpClientModule),
+    importProvidersFrom(
+      HttpClientXsrfModule.withOptions({
+        cookieName: 'session',
+        headerName: 'X-CSRFToken'
+      })
+    )
+  ],
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     SharedPageModule,
     HttpClientModule,
-    AuthenticationPageRoutingModule
+    AuthenticationPageRoutingModule,
+    ReactiveFormsModule
   ],
   declarations: [
     AuthenticationPage,

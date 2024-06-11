@@ -2,19 +2,35 @@
 
   <div>
     <shared-icon></shared-icon>
-    <form>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <h2>Bienvendo a la página de ingreso</h2>
 
       <ion-item>
-        <ion-input label="Número de teléfono" labelPlacement="floating" placeholder="3012345678"></ion-input>
+        <ion-select formControlName="role" placeholder="Selecciona un rol" interface="action-sheet">
+          <div slot="label">Rol<ion-text color="danger">*</ion-text></div>
+          <ion-select-option *ngFor="let role of roles" value="{{role}}">{{role | titlecase}}</ion-select-option>
+        </ion-select>
       </ion-item>
 
       <ion-item>
-        <ion-input label="Contraseña" labelPlacement="floating" type="password" placeholder="yourStrong#Password"></ion-input>
+        <ion-input formControlName="login" label="Teléfono/Correo/Usuario" labelPlacement="floating"
+          placeholder="Cualquier cosa que quieras"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input formControlName="password" label="Contraseña" labelPlacement="floating" type="password"
+          placeholder="yourStrong#Password"></ion-input>
       </ion-item>
 
       <div class="ion-padding submit-button">
         <ion-button size="default" type="submit">Enviar</ion-button>
+        <ion-alert
+          [isOpen]="isAlertOpen"
+          header="¡Error!"
+          message="Datos incorrectos o sin rellenar. Revisa nuevamente."
+          [buttons]="alertButtons"
+          (didDismiss)="setOpenAlert(false)">
+        </ion-alert>
       </div>
     </form>
   </div>

@@ -24,10 +24,10 @@ const routes: Routes = [
     path: 'worker',
     loadChildren: () => import('./worker/worker.module').then( m => m.WorkerPageModule)
   },
-  // {
-  //   path: '404',
-  //   component: Error404Component
-  // },
+  {
+    path: '404',
+    component: Error404Component
+  },
   // {
   //   path: '**',
   //   redirectTo: '404'

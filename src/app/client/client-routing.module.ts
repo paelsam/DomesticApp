@@ -24,13 +24,7 @@ const routes: Routes = [
       },
       {
         path: 'solicitudes',
-        loadChildren: () => import('./pages/solicitudes/solicitudes.module').then(m => m.SolicitudesPageModule),
-        children: [
-          {
-            path: 'solicitud-form',
-            loadChildren: () => import('./pages/solicitud-form/solicitud-form.module').then( m => m.SolicitudFormPageModule)
-          }
-        ]
+        loadChildren: () => import('./pages/solicitudes/solicitudes.module').then(m => m.SolicitudesPageModule)
       },
       {
         path: 'cuenta',
