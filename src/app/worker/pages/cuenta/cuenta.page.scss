@@ -1,0 +1,16 @@
+.marco-redondo {
+    width: 200px; /* Ancho */
+    height: 200px; /* Alto */
+    border-radius: 50%; /* Bordes redondos */
+    border: 2px solid #000; /* Borde negro */
+    overflow: hidden; /* Oculta cualquier parte de la imagen que se salga del contenedor */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.centered-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
