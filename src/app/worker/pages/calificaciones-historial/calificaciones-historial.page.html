@@ -10,4 +10,47 @@
       <ion-title size="large" class="ion-text-center">Calificaciones</ion-title>
     </ion-toolbar>
   </ion-header>
+  <div>
+    
+    <ion-item>
+      <ion-icon aria-hidden="true" name="star" slot="start"></ion-icon>
+      <ion-label>
+        <h1>Jardineria</h1>
+        <p>4.5</p>
+      </ion-label>
+    </ion-item>
+    
+    <ion-item>
+      <ion-icon aria-hidden="true" name="star" slot="start"></ion-icon>
+      <ion-label>
+        <h1>Plomeria</h1>
+        <p>4.3</p>
+      </ion-label>
+    </ion-item>
+    
+    <ion-item>
+      <ion-icon aria-hidden="true" name="star" slot="start"></ion-icon>
+      <ion-label>
+        <h1>Niñera</h1>
+        <p>4.7</p>
+      </ion-label>
+    </ion-item>
+  </div>
+
+  <div>
+    <ion-grid [fixed]="true">
+      <ion-row>
+        <ion-col><strong>Usuario</strong></ion-col>
+        <ion-col><strong>Labor</strong></ion-col>
+        <ion-col><strong>Comentario</strong></ion-col>
+        <ion-col><strong>Calificación</strong></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>Susana Lopez</ion-col>
+        <ion-col>Jardineria</ion-col>
+        <ion-col>Buen servicio</ion-col>
+        <ion-col>4.8</ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-content>
