@@ -7,8 +7,11 @@ import { IonicModule } from '@ionic/angular';
 import { ClientPageRoutingModule } from './client-routing.module';
 
 import { ClientPage } from './client.page';
-import { CardComponent } from '../shared/components/card/card.component';
 import { SharedPageModule } from '../shared/shared.module';
+import { BuscarServiciosComponent } from './pages/buscar-servicios/buscar-servicios.component';
+import { CuentaComponent } from './pages/cuenta/cuenta.component';
+import { ServiciosComponent } from './pages/servicios/servicios.component';
+import { SolicitudesComponent } from './pages/solicitudes/solicitudes.component';
 
 @NgModule({
   imports: [
@@ -18,7 +21,12 @@ import { SharedPageModule } from '../shared/shared.module';
     SharedPageModule,
     ClientPageRoutingModule
   ],
-  declarations: [ClientPage],
-  exports: []
+  declarations: [
+    ClientPage,
+    BuscarServiciosComponent,
+    CuentaComponent,
+    ServiciosComponent,
+    SolicitudesComponent
+  ]
 })
 export class ClientPageModule {}

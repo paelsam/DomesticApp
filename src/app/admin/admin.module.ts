@@ -7,6 +7,10 @@ import { IonicModule } from '@ionic/angular';
 import { AdminPageRoutingModule } from './admin-routing.module';
 
 import { AdminPage } from './admin.page';
+import { CuentaComponent } from './pages/cuenta/cuenta.component';
+import { SolicitudesComponent } from './pages/solicitudes/solicitudes.component';
+import { UsuariosComponent } from './pages/usuarios/usuarios.component';
+import { WorkersMapComponent } from './pages/workers-map/workers-map.component';
 
 @NgModule({
   imports: [
@@ -15,6 +19,12 @@ import { AdminPage } from './admin.page';
     IonicModule,
     AdminPageRoutingModule
   ],
-  declarations: [AdminPage]
+  declarations: [
+    AdminPage,
+    CuentaComponent,
+    SolicitudesComponent,
+    UsuariosComponent,
+    WorkersMapComponent
+  ]
 })
 export class AdminPageModule {}

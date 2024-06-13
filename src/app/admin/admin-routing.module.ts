@@ -2,6 +2,11 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AdminPage } from './admin.page';
+import { isAuthenticatedGuard } from '../authentication/guards/isAuthenticated.guard';
+import { WorkersMapComponent } from './pages/workers-map/workers-map.component';
+import { UsuariosComponent } from './pages/usuarios/usuarios.component';
+import { SolicitudesComponent } from './pages/solicitudes/solicitudes.component';
+import { CuentaComponent } from './pages/cuenta/cuenta.component';
 
 const routes: Routes = [
   {
@@ -10,20 +15,28 @@ const routes: Routes = [
     children: [
       {
         path: 'mapa',
-        loadChildren: () => import('./pages/workers-map/workers-map.module').then(m => m.WorkersMapPageModule)
+        canActivate: [isAuthenticatedGuard],
+        component: WorkersMapComponent
       },
       {
         path: 'usuarios',
-        loadChildren: () => import('./pages/usuarios/usuarios.module').then(m => m.UsuariosPageModule)
+        canActivate: [isAuthenticatedGuard],
+        component: UsuariosComponent
       },
       {
         path: 'solicitudes',
-        loadChildren: () => import('./pages/solicitudes/solicitudes.module').then(m => m.SolicitudesPageModule)
+        canActivate: [isAuthenticatedGuard],
+        component: SolicitudesComponent
       },
       {
         path: 'cuenta',
-        loadChildren: () => import('./pages/cuenta/cuenta.module').then( m => m.CuentaPageModule)
+        canActivate: [isAuthenticatedGuard],
+        component: CuentaComponent
       },
+      {
+        path: '**',
+        redirectTo: 'mapa'
+      }
     ]
   },
 ];

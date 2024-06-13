@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { WorkerPage } from './worker.page';
+import { SolicitudesListComponent } from './pages/solicitudes-list/solicitudes-list.component';
+import { CuentaComponent } from './pages/cuenta/cuenta.component';
+import { ReviewsHistoryComponent } from './pages/reviews-history/reviews-history.component';
 
 const routes: Routes = [
   {
@@ -10,15 +13,19 @@ const routes: Routes = [
     children: [
       {
         path: 'solicitudes',
-        loadChildren: () => import('./pages/solicitudes-list/solicitudes-list.module').then( m => m.SolicitudesListPageModule)
+        component: SolicitudesListComponent
       },
       {
         path: 'cuenta',
-        loadChildren: () => import('./pages/cuenta/cuenta.module').then( m => m.CuentaPageModule)
+        component: CuentaComponent
       },
       {
         path: 'calificaciones',
-        loadChildren: () => import('./pages/calificaciones-historial/calificaciones-historial.module').then( m => m.CalificacionesHistorialPageModule)
+        component: ReviewsHistoryComponent
+      },
+      {
+        path: '**',
+        redirectTo: 'solicitudes'
       }
     ]
   },

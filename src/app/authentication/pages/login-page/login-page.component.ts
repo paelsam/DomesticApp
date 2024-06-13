@@ -2,7 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { rolesArray } from 'src/helpers/roles';
+import { RolesRoutes, rolesArray } from 'src/helpers/roles';
 
 @Component({
   selector: 'app-login-page',
@@ -38,7 +38,8 @@ export class LoginPageComponent  implements OnInit {
   }
 
   onSubmit() {
-    const { role, login, password } = this.loginForm.value;
+    const role: 'administrador' | 'trabajador' | 'cliente' = this.loginForm.get('role')?.value;
+    const { login, password } = this.loginForm.value;
 
     if (!this.loginForm.valid) {
       this.setOpenAlert(true);
@@ -48,7 +49,7 @@ export class LoginPageComponent  implements OnInit {
 
     this.authService.login(this.CSRFToken, login, password)
       .subscribe({
-        next: () => this.router.navigateByUrl(`/${role}`),
+        next: () => this.router.navigateByUrl(`/${RolesRoutes[role]}`),
         error: (error) => {
           this.setOpenAlert(true)
         }

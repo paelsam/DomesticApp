@@ -7,6 +7,9 @@ import { IonicModule } from '@ionic/angular';
 import { WorkerPageRoutingModule } from './worker-routing.module';
 
 import { WorkerPage } from './worker.page';
+import { ReviewsHistoryComponent } from './pages/reviews-history/reviews-history.component';
+import { CuentaComponent } from './pages/cuenta/cuenta.component';
+import { SolicitudesListComponent } from './pages/solicitudes-list/solicitudes-list.component';
 
 @NgModule({
   imports: [
@@ -15,6 +18,11 @@ import { WorkerPage } from './worker.page';
     IonicModule,
     WorkerPageRoutingModule
   ],
-  declarations: [WorkerPage]
+  declarations: [
+    WorkerPage,
+    ReviewsHistoryComponent,
+    CuentaComponent,
+    SolicitudesListComponent
+  ]
 })
 export class WorkerPageModule {}

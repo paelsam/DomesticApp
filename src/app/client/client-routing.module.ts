@@ -2,6 +2,10 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { ClientPage } from './client.page';
+import { BuscarServiciosComponent } from './pages/buscar-servicios/buscar-servicios.component';
+import { ServiciosComponent } from './pages/servicios/servicios.component';
+import { SolicitudesComponent } from './pages/solicitudes/solicitudes.component';
+import { CuentaComponent } from './pages/cuenta/cuenta.component';
 
 const routes: Routes = [
   {
@@ -16,20 +20,24 @@ const routes: Routes = [
     children: [
       {
         path: 'servicios',
-        loadChildren: () => import('./pages/servicios/servicios.module').then(m => m.ServiciosPageModule)
+        component: ServiciosComponent
       },
       {
         path: 'buscar-servicios',
-        loadChildren: () => import('./pages/buscar-servicios/buscar-servicios.module').then(m => m.BuscarServiciosPageModule)
+        component: BuscarServiciosComponent
       },
       {
         path: 'solicitudes',
-        loadChildren: () => import('./pages/solicitudes/solicitudes.module').then(m => m.SolicitudesPageModule)
+        component: SolicitudesComponent
       },
       {
         path: 'cuenta',
-        loadChildren: () => import('./pages/cuenta/cuenta.module').then(m => m.CuentaPageModule)
+        component: CuentaComponent
       },
+      {
+        path: '**',
+        redirectTo: 'servicios'
+      }
     ]
   },
 

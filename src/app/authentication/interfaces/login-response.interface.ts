@@ -1,7 +1,9 @@
 export interface LoginResponse {
+  username: string;
   name: string;
   lastname: string;
-  rol: string;
+  role: string;
   access_token: string;
+  telefono: string;
 }
 

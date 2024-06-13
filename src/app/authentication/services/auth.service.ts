@@ -3,7 +3,7 @@ import { Injectable, computed, inject, signal } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { AuthStatus } from '../interfaces/auth-status.enum';
 import { CheckTokenResponse } from '../interfaces/check-token-response.interface';
-import { Observable, catchError, map, of, switchMap, throwError } from 'rxjs';
+import { Observable, catchError, map, of, switchMap, tap, throwError } from 'rxjs';
 import { LoginResponse } from '../interfaces/login-response.interface';
 import { RegisterResponse } from '../interfaces/register-response.interface';
 import { AuthToken } from '../interfaces/auth-token.interface';
@@ -32,9 +32,9 @@ export class AuthService {
     this.checkAuthStatus().subscribe();
   }
 
-  private setAuthentication(response: CheckTokenResponse): boolean {
+  private setAuthentication(response: CheckTokenResponse | LoginResponse): boolean {
     this._fullName.set(response.name + ' ' + response.lastname);
-    this._role.set(response.rol);
+    this._role.set(response.role.toLowerCase());
     this._authStatus.set(AuthStatus.authenticated);
     localStorage.setItem('token', response.access_token);
 
@@ -49,8 +49,10 @@ export class AuthService {
     const body = new FormData();
     body.append('username', login);
     body.append('password', password);
+    body.append('X-CSRFToken', CSRFToken);
 
     return this.http.post<LoginResponse>(url, body, {
+      withCredentials: true,
       headers: new HttpHeaders().set('X-CSRFToken', CSRFToken)
     })
       .pipe(
@@ -63,10 +65,12 @@ export class AuthService {
 
   }
 
-  getAuthToken(option: 'login' | 'register'): Observable<string> {
-    const url = `${this.baseUrl}/${option}`;
+  getAuthToken(option: 'login' | 'register', role?: string): Observable<string> {
+    let url = `${this.baseUrl}/${option}/${role}`;
 
-    return this.http.get<AuthToken>(url)
+    if (!role) url = `${this.baseUrl}/${option}`;
+
+    return this.http.get<AuthToken>(url, { withCredentials: true })
       .pipe(
         map(({ csrf_token: token }) => token),
         catchError(error => throwError(() => error))
@@ -79,7 +83,7 @@ export class AuthService {
     const body = user;
 
     const headers = new HttpHeaders();
-    this.getAuthToken('register').subscribe(
+    this.getAuthToken(`register`, role).subscribe(
       token => {
         headers.set('x-CSRFToken', token)
         console.log(token);
@@ -89,14 +93,22 @@ export class AuthService {
     return this.http.post<RegisterResponse>(url, body, { headers })
       .pipe(
         // ! Cambiar esto cuando estén disponibles los endpoints de la API
-        map((response: RegisterResponse) => true),
+        map((response: RegisterResponse) => {
+          console.log(response);
+          return true
+        }),
         catchError(error => throwError(() => error))
       );
   }
 
   logout() {
     localStorage.removeItem('token');
+    this._role.set(null);
     this._authStatus.set(AuthStatus.notAuthenticated);
+
+    this.http.get(`${this.baseUrl}/logout`, { withCredentials: true }).subscribe(
+      message => console.log(message),
+    );
   }
 
   checkAuthStatus(): Observable<boolean> {
@@ -113,9 +125,10 @@ export class AuthService {
 
     return this.http.get<CheckTokenResponse>(url, { headers })
       .pipe(
-        // ! Cambiar esto cuando estén disponibles los endpoints de la API
-        // map((response: CheckTokenResponse) => this.setAuthentication(response)),
-        map((response: CheckTokenResponse) => true),
+        map((response: CheckTokenResponse) => {
+          console.log(response);
+          return this.setAuthentication(response);
+        }),
         catchError(error => {
           console.log(error);
           this._authStatus.set(AuthStatus.notAuthenticated);
