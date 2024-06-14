@@ -7,6 +7,7 @@ import { Observable, catchError, map, of, switchMap, tap, throwError } from 'rxj
 import { LoginResponse } from '../interfaces/login-response.interface';
 import { RegisterResponse } from '../interfaces/register-response.interface';
 import { AuthToken } from '../interfaces/auth-token.interface';
+import { User } from 'src/app/shared/interfaces/user-response.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -21,20 +22,23 @@ export class AuthService {
   private _fullName = signal<string | null>(null);
   private _role = signal<string | null>(null);
   private _authStatus = signal<AuthStatus>(AuthStatus.checking);
+  private _user = signal<User | null>(null);
 
   // Computed properties
   public fullName = computed(() => this._fullName());
   public role = computed(() => this._role());
   public authStatus = computed(() => this._authStatus());
+  public user = computed(() => this._user());
 
 
   constructor() {
     this.checkAuthStatus().subscribe();
   }
 
-  private setAuthentication(response: CheckTokenResponse | LoginResponse): boolean {
+  private setAuthentication(response: CheckTokenResponse | LoginResponse | User): boolean {
     this._fullName.set(response.name + ' ' + response.lastname);
     this._role.set(response.role.toLowerCase());
+    this._user.set(response as User);
     this._authStatus.set(AuthStatus.authenticated);
     localStorage.setItem('token', response.access_token);
 
@@ -105,6 +109,8 @@ export class AuthService {
     localStorage.removeItem('token');
     this._role.set(null);
     this._authStatus.set(AuthStatus.notAuthenticated);
+    this._fullName.set(null);
+    this._user.set(null);
 
     this.http.get(`${this.baseUrl}/logout`, { withCredentials: true }).subscribe(
       message => console.log(message),

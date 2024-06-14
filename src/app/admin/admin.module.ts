@@ -11,12 +11,14 @@ import { CuentaComponent } from './pages/cuenta/cuenta.component';
 import { SolicitudesComponent } from './pages/solicitudes/solicitudes.component';
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 import { WorkersMapComponent } from './pages/workers-map/workers-map.component';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    LeafletModule,
     AdminPageRoutingModule
   ],
   declarations: [

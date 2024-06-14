@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { AuthService } from 'src/app/authentication/services/auth.service';
 
 @Component({
   selector: 'admin-cuenta',
@@ -7,8 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CuentaComponent  implements OnInit {
 
-  constructor() { }
+  private _authService = inject(AuthService);
+
+  public user = this._authService.user();
+  public fullName = this._authService.fullName();
+  public role = this._authService.role();
 
   ngOnInit() {}
+
+
+  logout() {
+    this._authService.logout();
+  }
 
 }

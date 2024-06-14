@@ -10,6 +10,9 @@ export class GeolocationService {
 
   public http = inject(HttpClient);
 
+  public latCali: number = 3.43722;
+  public lonCali: number = -76.5225;
+
   // Coordenadas del área de Cali
   public viewbox: string = '-76.606,3.539,-76.437,3.313';
   public bounded: number = 1; // Limitar la búsqueda a un área específica

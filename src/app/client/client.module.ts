@@ -12,6 +12,7 @@ import { BuscarServiciosComponent } from './pages/buscar-servicios/buscar-servic
 import { CuentaComponent } from './pages/cuenta/cuenta.component';
 import { ServiciosComponent } from './pages/servicios/servicios.component';
 import { SolicitudesComponent } from './pages/solicitudes/solicitudes.component';
+import { SolicitarWorkerComponent } from './pages/solicitar-worker/solicitar-worker.component';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import { SolicitudesComponent } from './pages/solicitudes/solicitudes.component'
     BuscarServiciosComponent,
     CuentaComponent,
     ServiciosComponent,
-    SolicitudesComponent
+    SolicitudesComponent,
+    SolicitarWorkerComponent
   ]
 })
 export class ClientPageModule {}
