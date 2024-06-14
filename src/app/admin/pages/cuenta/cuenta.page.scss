@@ -1,0 +1,57 @@
+ion-avatar {
+    width: 20px;
+    height: 20px;
+  
+    @media (min-width: 600px) {
+      width: 200px;
+      height: 200px;
+    }
+  }
+  .avatar-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; 
+    align-items: center;      
+    padding-left: 140px;
+    padding-top: 100px;
+    gap: 20px;    
+  }
+ 
+
+.information-container {
+    display: flex;
+    justify-content: right; 
+    align-items: center;
+    padding-top: 36px;
+    flex-direction: column;
+  }
+
+  .editar-container {
+    display: flex; 
+    padding-left: 350px;
+  }
+
+  .everything {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: left; 
+    align-items: left;
+    gap: 100px;
+          
+  }
+
+  ion-list{
+
+    width: 50px;
+    height: 20px;
+  
+    @media (min-width: 600px) {
+      width: 500px;
+      height: 400px;
+    }
+
+  }
+  
+
+ 

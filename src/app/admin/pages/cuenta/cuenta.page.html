@@ -1,13 +1,113 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>cuenta</ion-title>
+    <ion-title>Cuenta</ion-title>
   </ion-toolbar>
 </ion-header>
 
+
+
+
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <div class="everything">
+
+    <div class="avatar-container">
+      <ion-avatar>
+        <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+      </ion-avatar>
+      <ion-button shape="round">Cerrar Sesion</ion-button>
+      
+    </div>
+  
+  
+
+    <div class="information-container">
+      <ion-list [inset]="true">
+
+        <ion-item>
+          <ion-label>
+            <h2> Cargo </h2>
+            <p> cargo_Ejemplo</p>
+          </ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>
+            <h2> Nombre </h2>
+            <p>nombre en cuestion</p>
+          </ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>
+            <h2>Apellido</h2>
+            <p>Apellido en cuestion</p>
+          </ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>
+            <h2>Fecha de nacimiento</h2>
+            <p> ## / ## / ## </p>
+          </ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>
+            <h2>Email</h2>
+            <p>email&#64;gmail.com</p>
+          </ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>
+            <h2>Celular</h2>
+            <p>### - ### - ## - ##</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+      <div class="editar-container">
+        <ion-button fill="outline" color="medium">Editar</ion-button>
+      </div>
+
+
+    </div>
+
+  </div>
+
+      <!--<div class="information2-container">
+        <ion-list [inset]="true">
+          
+          <ion-item>
+            <ion-label>
+              <h2>Segundo Nombre</h2>
+              <p>nombre en cuestion</p>
+            </ion-label>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>
+              <h2>Primer Apellido</h2>
+              <p>Apellido en cuestion</p>
+            </ion-label>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>
+              <h2>Celular</h2>
+              <p>### - ### - ## - ##</p>
+            </ion-label>
+
+          </ion-item>
+        </ion-list>
+      
+      </div>-->
+
+
+
+  <ion-header collapse="condense"> 
     <ion-toolbar>
       <ion-title size="large">cuenta</ion-title>
     </ion-toolbar>
   </ion-header>
+
 </ion-content>
