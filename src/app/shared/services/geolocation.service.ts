@@ -25,6 +25,14 @@ export class GeolocationService {
       );
   }
 
+  public getAddressNameByCoordinates<Address>(lat: number, lon: number): Observable<Address> {
+    return this.http.get<Address>(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`)
+      .pipe(
+        map((address) => address),
+        catchError((error) => throwError(console.error))
+      );
+  }
+
 
 
 

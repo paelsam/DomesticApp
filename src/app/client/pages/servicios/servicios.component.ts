@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { LaborService } from 'src/app/shared/services/labor.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-servicios',
@@ -7,8 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ServiciosComponent  implements OnInit {
 
-  constructor() { }
+  public baseUrl = environment.baseUrl;
 
-  ngOnInit() {}
+  private laborService = inject(LaborService);
+
+
+
+  ngOnInit() {
+    this.laborService.getLaboresDetails().subscribe((response) => {
+      console.log(response);
+    });
+  }
 
 }

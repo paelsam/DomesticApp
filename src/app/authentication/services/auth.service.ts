@@ -23,6 +23,7 @@ export class AuthService {
   private _role = signal<string | null>(null);
   private _authStatus = signal<AuthStatus>(AuthStatus.checking);
   private _user = signal<User | null>(null);
+  private _address = signal<string | null>(null);
 
   // Computed properties
   public fullName = computed(() => this._fullName());
@@ -37,10 +38,9 @@ export class AuthService {
 
   private setAuthentication(response: CheckTokenResponse | LoginResponse | User): boolean {
     this._fullName.set(response.name + ' ' + response.lastname);
-    this._role.set(response.role.toLowerCase());
+    this._role.set(response.rol.toLowerCase());
     this._user.set(response as User);
     this._authStatus.set(AuthStatus.authenticated);
-    localStorage.setItem('token', response.access_token);
 
     return true;
   }
@@ -60,7 +60,10 @@ export class AuthService {
       headers: new HttpHeaders().set('X-CSRFToken', CSRFToken)
     })
       .pipe(
-        map((response: LoginResponse) => this.setAuthentication(response)),
+        map((response: LoginResponse) => {
+          localStorage.setItem('token', response.access_token);
+          return this.setAuthentication(response)
+        }),
         catchError(error => {
           console.log('Error', error);
           return throwError(() => error);
@@ -118,7 +121,7 @@ export class AuthService {
   }
 
   checkAuthStatus(): Observable<boolean> {
-    const url = `${this.baseUrl}/`;
+    const url = `${this.baseUrl}/verify/sesion`;
     const token = localStorage.getItem('token');
 
     if (!token) {

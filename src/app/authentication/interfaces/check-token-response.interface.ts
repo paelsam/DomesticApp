@@ -4,5 +4,6 @@ export interface CheckTokenResponse {
   username: string;
   name: string;
   lastname: string;
-  role: string;
+  phone: string;
+  rol: string;
 }

@@ -2,8 +2,10 @@ export interface LoginResponse {
   username: string;
   name: string;
   lastname: string;
-  role: string;
+  latitud?: string;
+  longitud?: string;
+  rol: string;
   access_token: string;
-  telefono: string;
+  phone: string;
 }
 

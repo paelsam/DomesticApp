@@ -20,6 +20,8 @@ export class RegisterPageComponent implements OnInit {
   private geolocationService = inject(GeolocationService);
   private laborService = inject(LaborService);
 
+  public today: string = new Date().toISOString();
+
   private CSRFToken: string = '';
 
   public alertMessage!: string;
@@ -45,6 +47,8 @@ export class RegisterPageComponent implements OnInit {
   public isClient: boolean = false;
   public isWorker: boolean = false;
 
+  public tiposTarjeta = ['Crédito', 'Débito'];
+
   ngOnInit() {
     // this.authService.getAuthToken('register')
     //   .subscribe(token => this.CSRFToken = token);
@@ -59,8 +63,12 @@ export class RegisterPageComponent implements OnInit {
         this.isWorker = false;
         this.registerForm.get('labor')?.clearValidators();
         this.registerForm.get('precio_hora')?.clearValidators();
+        this.registerForm.get('tipo_tarjeta')?.setValidators([Validators.required]);
+        this.registerForm.get('codigo_seguridad')?.setValidators([Validators.required]);
+        this.registerForm.get('fecha_expiracion')?.setValidators([Validators.required]);
+        this.registerForm.get('numero_tarjeta')?.setValidators([Validators.required]);
       }
-      else if ( value.role === Roles.Trabajador ) {
+      else if (value.role === Roles.Trabajador) {
         this.isClient = false;
         this.isWorker = true;
         this.registerForm.get('labor')?.setValidators([Validators.required]);
@@ -136,6 +144,10 @@ export class RegisterPageComponent implements OnInit {
     labor: ['', [Validators.minLength(3)]],
     precio_hora: ['', [Validators.minLength(2)]],
     telefono: ['', [Validators.required, Validators.minLength(3)]],
+    tipo_tarjeta: ['', []],
+    codigo_seguridad: ['', [Validators.minLength(3)]],
+    fecha_expiracion: [this.today, []],
+    numero_tarjeta: ['', [Validators.minLength(16)]],
     disponibilidad: [true],
   });
 
@@ -167,7 +179,7 @@ export class RegisterPageComponent implements OnInit {
       return;
     }
 
-    if ( this.isClient ) {
+    if (this.isClient) {
       if (!this.reciboPublico) {
         this.alertMessage = 'Debes adjuntar el recibo público para poder registrarte como cliente.'
         this.setOpenAlert(true);
@@ -205,9 +217,14 @@ export class RegisterPageComponent implements OnInit {
     if (registerData.role === Roles.Cliente) {
       //! Falta la implementación de añadir la tarjeta de crédito a la cuenta
       formdata.append('recibo_publico', this.reciboPublico as Blob);
+      formdata.append('tipo_tarjeta', registerData.tipo_tarjeta as string);
+      formdata.append('codigo_seguridad', registerData.codigo_seguridad as string);
+      formdata.append('numero_tarjeta', registerData.numero_tarjeta as string);
+      // La fecha de expiración se debe enviar en un formato que el atributo DATE en postgresql pueda entender
+      formdata.append('fecha_expiracion',  registerData.fecha_expiracion as string);
     }
 
-    if ( registerData.role === Roles.Trabajador ) {
+    if (registerData.role === Roles.Trabajador) {
       formdata.append('labor', registerData.labor as string);
       formdata.append('precio_hora', registerData.precio_hora as string);
       formdata.append('foto_perfil', this.fotoPerfil as Blob);
@@ -215,18 +232,20 @@ export class RegisterPageComponent implements OnInit {
     }
 
     this.authService.register(formdata, registerData.role as string)
-    .subscribe({
-      next: () => {
-        this.alertMessage = 'Registro exitoso. Ahora puedes iniciar sesión.'
-        this.setOpenAlert(true);
-        this.router.navigateByUrl(`/authentication/login`)
-      },
-      error: (error) => {
-        console.error('Error en el registro: ', error);
-        this.alertMessage = 'Error al registrarse. Por favor, inténtalo nuevamente.';
-        this.setOpenAlert(true);
-      }
-    })
+      .subscribe({
+        next: () => {
+          //! Arreglar esto para que se muestre un mensaje de éxito
+          this.alertMessage = 'Registro exitoso. Ahora puedes iniciar sesión.'
+          this.setOpenAlert(true);
+          console.log(this.latitud, this.longitud)
+          this.router.navigateByUrl(`/authentication/login`)
+        },
+        error: (error) => {
+          console.error('Error en el registro: ', error);
+          this.alertMessage = 'Error al registrarse. Por favor, inténtalo nuevamente.';
+          this.setOpenAlert(true);
+        }
+      })
   }
 
 
