@@ -6,6 +6,6 @@
 
 <ion-content [fullscreen]="true">
 
-  <div leaflet [leafletOptions]="options" [leafletLayers]="layers" id="workers-map">
+  <div leaflet [leafletOptions]="options" [leafletLayers]="layers" (leafletMapReady)="onMapReady($event)" id="workers-map">
   </div>
 </ion-content>

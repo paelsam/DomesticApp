@@ -2,6 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { Icon, Map, Marker, latLng, marker, tileLayer } from 'leaflet';
 import { GeolocationService } from 'src/app/shared/services/geolocation.service';
 import { AdminService } from '../../services/admin.service';
+import { delay } from 'rxjs';
 
 @Component({
   selector: 'app-workers-map',
@@ -47,6 +48,17 @@ export class WorkersMapComponent implements OnInit {
     );
 
   }
+
+  async onMapReady( map: Map ) {
+    await this.delay(5);
+    map.invalidateSize(false);
+  }
+
+  delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+  }
+
+
 
 
 }
