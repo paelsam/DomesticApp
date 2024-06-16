@@ -11,31 +11,53 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-grid class="centered-grid">
-    <ion-row >
-      <ion-col size="3" >
-        <ion-img
-        src="https://docs-demo.ionic.io/assets/madison.jpg" 
-        alt="The Wisconsin State Capitol building in Madison, WI at night"
-        class="marco-redondo"
 
-      ></ion-img>
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title class="ion-text-center" style="margin-left: -50px;">Mi cuenta</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding"> 
+  
+
+  <div style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
+    <ion-avatar style="width: 100px; height: 100px;">
+  
+        <img alt="Profile picture" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+      </ion-avatar>
+  </div>
+
+  <div style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
+    <ion-button shape="round">Cerrar sesión</ion-button>
+  </div>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6">
+        <ion-item class="ion-margin-top" style="margin-left: 300px;">
+          <ion-textarea [readonly]="true" label="Nombres:" placeholder="Juan Pedro"></ion-textarea>
+        </ion-item>
+
+        <ion-item class="ion-margin-top" style="margin-left: 300px;">
+          <ion-textarea [readonly]="true" label="Email:" placeholder="juanmendez@gmail.com"></ion-textarea>
+        </ion-item>
+
+      </ion-col>
+      <ion-col size="3.5">
+        <ion-item class="ion-margin-top" style="margin-left: -5px;">
+          <ion-textarea [readonly]="true" label="Apellidos:" placeholder="Méndez López"></ion-textarea>
+        </ion-item>
+
+        <ion-item class="ion-margin-top" style="margin-left: -5px;">
+          <ion-textarea [readonly]="true" label="Dirección:" placeholder="Carrera 5 # 13-24, Barrio San Antonio"></ion-textarea>
+        </ion-item>
       </ion-col>
     </ion-row>
   </ion-grid>
 
-  <ion-content color="light">
-    <ion-list [inset]="true">
-      <ion-item>
-        <ion-label>Nombres: </ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-label>Dirección: </ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-label>Puntuación: </ion-label>
-      </ion-item>
-    </ion-list>
   </ion-content>
-
-</ion-content>
+</div>
