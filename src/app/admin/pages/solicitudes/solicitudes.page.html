@@ -5,9 +5,69 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+
+  <div class="searchBar">
+  <ion-searchbar animated="true" placeholder="Search"></ion-searchbar>
+  </div>
+
+  
+  <ion-label>
+    <H1> Reporte de solicitudes </H1>
+  </ion-label>
+
+
+    <div class="listaUsuarios">
+      <ion-list>
+        <ion-item *ngFor="let item of items; let index">
+          <ion-avatar slot="start">
+            <img [src]="'https://picsum.photos/80/80?random=' + index" alt="avatar" />
+          </ion-avatar>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-label>
+                  
+                  <strong> Usuario </strong> 
+                  {{item}}
+                </ion-label>
+              </ion-col>
+              <ion-col>
+                <ion-label>
+                  <strong>Trabajador</strong> 
+                  {{item}}
+                </ion-label>
+              </ion-col>
+              <ion-col>
+                <ion-label>
+                  <strong>Labor </strong> 
+                  {{item}}
+                </ion-label>
+              </ion-col>
+              <ion-col>
+                <ion-label>
+                  <strong>--/ -- /--</strong> 
+                </ion-label>
+              </ion-col>
+              <ion-col>
+                <ion-label>
+                  <strong> Calificación #</strong> 
+                  {{item}}
+                </ion-label>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+      </ion-list>
+      <ion-infinite-scroll>
+        <ion-infinite-scroll-content loadingText="Please wait..." loadingSpinner="bubbles"></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+    </div>
+
+
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">solicitudes</ion-title>
     </ion-toolbar>
   </ion-header>
-</ion-content>
+  </ion-content>
+

@@ -1,0 +1,38 @@
+ion-col {
+    color: #fff;
+    text-align: center;
+    margin-top: 8px;
+    
+  }
+
+  ion-list{
+    margin-bottom: 4px;
+    margin-top: 50px;
+  }
+  h1 {
+    font-size: 26px; 
+    font-weight: bold; 
+    text-align: center;  
+    margin: 0; 
+  }
+
+.searchBar{
+    width: 25%;
+    margin-left: auto;
+    padding-right: 3%;
+    
+
+}
+.listaUsuarios{
+//display: inline-block;
+  overflow-x: auto;
+  justify-content: center;
+  margin-left: 2%;
+  margin-right: 2%;
+  flex-wrap: no-wrap;
+  overflow: hidden;
+   
+
+}
+
+  

@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./solicitudes.page.scss'],
 })
 export class SolicitudesPage implements OnInit {
+ 
 
-  constructor() { }
-
+  constructor() { 
+  }
+  items: string[] = []; 
   ngOnInit() {
+    for (let i = 1; i < 51; i++) {
+      this.items.push(`${i}`);
+    }
   }
 
 }
