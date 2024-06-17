@@ -134,8 +134,8 @@
 
       <div class="ion-padding submit-button">
         <ion-button size="default" type="submit">Enviar</ion-button>
-        <ion-alert [isOpen]="isAlertOpen" header="¡Error!" [message]="alertMessage" [buttons]="alertButtons"
-          (didDismiss)="setOpenAlert(false)">
+        <ion-alert [isOpen]="isAlertOpen" header="Información" [message]="alertMessage" [buttons]="alertButtons"
+          (didDismiss)="setOpenAlert(false, true)">
         </ion-alert>
       </div>
     </form>

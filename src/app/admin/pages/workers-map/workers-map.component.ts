@@ -21,7 +21,7 @@ export class WorkersMapComponent implements OnInit {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       })
     ],
-    zoom: 15,
+    zoom: 13,
     center: latLng(this.geoLocation.latCali, this.geoLocation.lonCali)
   }
 

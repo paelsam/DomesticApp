@@ -18,7 +18,7 @@
   top: 10px;
   inset-inline-end: 10px;
 
-  font-size: 0.8rem;
+  font-size: 0.5rem;
 
   display: flex;
   align-items: center;
@@ -36,4 +36,8 @@ ion-label strong {
 
 ion-label ion-note {
   font-size: 0.9rem;
+}
+
+.text-estado {
+  font-weight: bold;
 }

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { LaboresResponse } from 'src/app/shared/interfaces/labores-response.interface';
+import { LaborService } from 'src/app/shared/services/labor.service';
 
 @Component({
   selector: 'client-buscar-servicios',
@@ -7,8 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BuscarServiciosComponent  implements OnInit {
 
-  constructor() { }
+  private laborService = inject(LaborService);
 
-  ngOnInit() {}
+  private servicios: string[] = [];
+  public results: string[] = [];
+
+  ngOnInit() {
+    this.laborService.getLabores().subscribe((response) => {
+      this.servicios = response.labores;
+      this.results = [...this.servicios];
+    });
+  }
+
+  handleInput(event: any) {
+    const query = event.target.value.toLowerCase();
+    this.results = this.servicios.filter((d) => d.toLowerCase().indexOf(query) > -1);
+  }
 
 }

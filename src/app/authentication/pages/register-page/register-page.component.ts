@@ -74,6 +74,11 @@ export class RegisterPageComponent implements OnInit {
         this.registerForm.get('labor')?.setValidators([Validators.required]);
         this.registerForm.get('precio_hora')?.setValidators([Validators.required]);
       }
+
+      if (value.direccion!.length >= 5 && this.registerForm.valid) {
+        this.getLatLong();
+      }
+
     });
   }
 
@@ -91,8 +96,9 @@ export class RegisterPageComponent implements OnInit {
               longitud: parseFloat(address.lon)
             }, { emitEvent: false });
           } else {
-            this.alertMessage = 'Dirección no encontrada. Por favor, verifica la dirección ingresada.'
-            this.setOpenAlert(true);
+            console.log('Dirección no encontrada')
+            // this.alertMessage = 'Dirección no encontrada. Por favor, verifica la dirección ingresada.'
+            // this.setOpenAlert(true);
           }
         });
     }
@@ -126,10 +132,6 @@ export class RegisterPageComponent implements OnInit {
     );
   }
 
-  /*
-            labor = request.form.get('labor')
-        precio_hora = request.form.get('precio_hora')
-  */
 
   public registerForm = this.fb.group({
 
@@ -165,8 +167,10 @@ export class RegisterPageComponent implements OnInit {
     this.fotoPerfil = event.target.files[0];
   }
 
-  setOpenAlert(isOpen: boolean) {
+  setOpenAlert(isOpen: boolean, success?: boolean) {
     this.isAlertOpen = isOpen;
+    if ( success )
+      this.router.navigateByUrl(`/authentication/login`)
   }
 
   onSubmit() {
@@ -200,8 +204,6 @@ export class RegisterPageComponent implements OnInit {
         return;
       }
     }
-
-    this.getLatLong();
 
     const formdata = new FormData();
     const registerData = this.registerForm.value;
@@ -237,8 +239,6 @@ export class RegisterPageComponent implements OnInit {
           //! Arreglar esto para que se muestre un mensaje de éxito
           this.alertMessage = 'Registro exitoso. Ahora puedes iniciar sesión.'
           this.setOpenAlert(true);
-          console.log(this.latitud, this.longitud)
-          this.router.navigateByUrl(`/authentication/login`)
         },
         error: (error) => {
           console.error('Error en el registro: ', error);

@@ -7,6 +7,7 @@ import { IconComponent } from './components/icon/icon.component';
 import { IconoNotificacionComponent } from './components/icono-notificacion/icono-notificacion.component';
 import { HeaderComponent } from './components/header/header.component';
 import { CardComponent } from './components/card/card.component';
+import { AlertComponent } from './components/alert/alert.component';
 
 
 
@@ -21,12 +22,14 @@ import { CardComponent } from './components/card/card.component';
     IconoNotificacionComponent,
     HeaderComponent,
     CardComponent,
+    AlertComponent
   ],
   exports: [
     IconComponent,
     IconoNotificacionComponent,
     HeaderComponent,
     CardComponent,
+    AlertComponent
   ]
 
 })

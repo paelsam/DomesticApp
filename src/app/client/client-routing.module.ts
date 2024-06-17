@@ -6,6 +6,8 @@ import { BuscarServiciosComponent } from './pages/buscar-servicios/buscar-servic
 import { ServiciosComponent } from './pages/servicios/servicios.component';
 import { SolicitudesComponent } from './pages/solicitudes/solicitudes.component';
 import { CuentaComponent } from './pages/cuenta/cuenta.component';
+import { WorkersListComponent } from './pages/workers-list/workers-list.component';
+import { SolicitarWorkerComponent } from './pages/solicitar-worker/solicitar-worker.component';
 
 const routes: Routes = [
   {
@@ -19,8 +21,16 @@ const routes: Routes = [
     component: ClientPage,
     children: [
       {
+        path: 'servicios/:nombre',
+        component: WorkersListComponent
+      },
+      {
         path: 'servicios',
         component: ServiciosComponent
+      },
+      {
+        path: 'solicitar-worker/:nombre/:id',
+        component: SolicitarWorkerComponent
       },
       {
         path: 'buscar-servicios',
@@ -34,10 +44,10 @@ const routes: Routes = [
         path: 'cuenta',
         component: CuentaComponent
       },
-      {
-        path: '**',
-        redirectTo: 'servicios'
-      }
+      // {
+      //   path: '**',
+      //   redirectTo: 'servicios'
+      // }
     ]
   },
 

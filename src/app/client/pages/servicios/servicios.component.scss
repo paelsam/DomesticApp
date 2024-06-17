@@ -22,7 +22,7 @@
 }
 
 .custom-card-content {
-  height: 90px; /* Altura fija para el área de contenido */
+  height: 60px; /* Altura fija para el área de contenido */
   overflow: hidden; /* Oculta el contenido que excede el área */
   display: flex;
   flex-direction: column;
@@ -39,8 +39,12 @@
   white-space: nowrap; /* Evita el salto de línea */
 }
 
-@media( max-width: 768px ) {
-  .custom-card-content {
-    height: 125px; /* Altura fija para el área de contenido */
-  }
+ion-card-header {
+  padding-bottom: 10px;
 }
+
+// @media( max-width: 768px ) {
+//   .custom-card-content {
+//     height: 125px; /* Altura fija para el área de contenido */
+//   }
+// }

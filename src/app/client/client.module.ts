@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -13,6 +13,7 @@ import { CuentaComponent } from './pages/cuenta/cuenta.component';
 import { ServiciosComponent } from './pages/servicios/servicios.component';
 import { SolicitudesComponent } from './pages/solicitudes/solicitudes.component';
 import { SolicitarWorkerComponent } from './pages/solicitar-worker/solicitar-worker.component';
+import { WorkersListComponent } from './pages/workers-list/workers-list.component';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { SolicitarWorkerComponent } from './pages/solicitar-worker/solicitar-wor
     FormsModule,
     IonicModule,
     SharedPageModule,
-    ClientPageRoutingModule
+    ClientPageRoutingModule,
+    ReactiveFormsModule
   ],
   declarations: [
     ClientPage,
@@ -28,7 +30,8 @@ import { SolicitarWorkerComponent } from './pages/solicitar-worker/solicitar-wor
     CuentaComponent,
     ServiciosComponent,
     SolicitudesComponent,
-    SolicitarWorkerComponent
+    SolicitarWorkerComponent,
+    WorkersListComponent
   ]
 })
 export class ClientPageModule {}

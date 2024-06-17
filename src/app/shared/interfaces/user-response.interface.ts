@@ -5,7 +5,7 @@ export interface User {
   name: string;
   rol: string;
   username: null;
-  telefono?: string;
+  phone?: string;
   email?: string;
   password?: string;
   latitud?: string;
