@@ -1,13 +1,63 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>usuarios</ion-title>
-  </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
+
+  <div class="searchBar">
+  <ion-searchbar animated="true" placeholder="Search"></ion-searchbar>
+  </div>
+
+  
+  <ion-label>
+    <H1> Usuarios registrados </H1>
+  <ion-label>
+  </ion-label>
+  </ion-label>
+
+      
+  <ion-row class="space">
+    <ion-col size="3" class="ion-text-center" class="usuarioTitulo"><strong>Usuario</strong></ion-col>
+    <ion-col size="4" class="ion-text-center" class="correoTitulo"><strong>Correo</strong></ion-col>
+    <ion-col size="3" class="ion-text-center" class="fechaTitulo"><strong>Fecha de registro</strong></ion-col>
+  </ion-row>
+
+
+    <div class="listSpace">
+      <ion-list>
+        <ion-item *ngFor="let item of items; let index">
+          <ion-avatar slot="start">
+            <img [src]="'https://picsum.photos/80/80?random=' + index" alt="avatar" />
+          </ion-avatar>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-label >
+                  
+                   Usuario {{item}}
+                </ion-label>
+              </ion-col>
+              <ion-col>
+                <ion-label>correo{{item}}&#64;mail.com </ion-label>
+        
+              </ion-col>
+              
+              <ion-col>
+                <ion-label> --/ -- /-- </ion-label>
+              </ion-col>
+              
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+      </ion-list>
+      <ion-infinite-scroll>
+        <ion-infinite-scroll-content loadingText="Please wait..." loadingSpinner="bubbles"></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+    </div>
+
+
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">usuarios</ion-title>
+      <ion-title size="large">Usuarios registrados</ion-title>
     </ion-toolbar>
   </ion-header>
-</ion-content>
+  </ion-content>
