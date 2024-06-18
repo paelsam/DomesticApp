@@ -12,12 +12,20 @@
           {{ solicitud.cliente.nombre + ' ' + solicitud.cliente.apellido }}<br />
           <ion-text color="medium">{{ solicitud.solicitud.descripcion }}</ion-text><br />
           <ion-note>{{ solicitud.cliente.latitud }}, {{ solicitud.cliente.longitud }}</ion-note><br />
-          <ion-note>Calle 101C</ion-note>
+          <ion-note>Número: {{ solicitud.cliente.telefono }}</ion-note><br />
+          <!-- dos ion-note en caso de que la solicitud se haya completado -->
+          <ion-note *ngIf="solicitud.solicitud.completado" color="success">
+            <strong>Completado</strong>
+          </ion-note>
+          <ion-note *ngIf="!solicitud.solicitud.completado" color="danger">
+            <strong>En proceso</strong>
+          </ion-note>
         </ion-label>
         <ion-note slot="end">{{ solicitud.solicitud.fecha | date:'short'}}</ion-note>
+
       </ion-item>
 
-      <ion-item-options slot="end">
+      <ion-item-options slot="end" *ngIf="!solicitud.solicitud.completado">
         <ion-item-option color="success" expandable="true" [disabled]="">
           <a class="solicitar-button" (click)="completarSolicitud(solicitud.solicitud.solicitud_id)">
             <ion-icon name="checkmark-outline"></ion-icon>

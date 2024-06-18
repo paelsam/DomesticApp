@@ -20,17 +20,7 @@ export class UsuariosComponent  implements OnInit {
   public users: any[] = [];
 
   ngOnInit(): void {
-    this.http.get<User[]>(`${this.baseUrl}/users/cliente`, { headers: this.headers, withCredentials: true })
-      .subscribe({
-        next: (users: User[]) => {
-          this.users.push(...users);
-        },
-        error: (error) => {
-          console.log(error);
-        }
-      });
-
-      this.http.get<User[]>(`${this.baseUrl}/users/trabajador`, { headers: this.headers, withCredentials: true })
+    this.http.get<User[]>(`${this.baseUrl}/users/administrador`, { headers: this.headers, withCredentials: true })
       .subscribe({
         next: (users: User[]) => {
           this.users.push(...users);

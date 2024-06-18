@@ -21,7 +21,7 @@ export class WorkersMapComponent implements OnInit {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       })
     ],
-    zoom: 13,
+    zoom: 14,
     center: latLng(this.geoLocation.latCali, this.geoLocation.lonCali)
   }
 
@@ -50,7 +50,7 @@ export class WorkersMapComponent implements OnInit {
   }
 
   async onMapReady( map: Map ) {
-    await this.delay(5);
+    await this.delay(10);
     map.invalidateSize(false);
   }
 

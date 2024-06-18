@@ -12,4 +12,5 @@ export interface Solicitud {
   usuario_labor_id: number;
   trabajador?:      Worker;
   calificacion?:    number;
+  isCalificado?:    boolean;
 }

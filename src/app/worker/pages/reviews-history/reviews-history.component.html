@@ -13,29 +13,11 @@
         <ion-col style="background-color: #83a0f0;"><strong>Comentario</strong></ion-col>
         <ion-col style="background-color: #83a0f0;"><strong> <ion-icon name="star" aria-label="Favorite"></ion-icon> </strong></ion-col>
       </ion-row>
-      <ion-row>
-        <ion-col>Susana Lopez</ion-col>
-        <ion-col>Jardineria</ion-col>
-        <ion-col>Buen servicio</ion-col>
-        <ion-col>4.8 </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>Dario Catañeda</ion-col>
-        <ion-col>Limpieza</ion-col>
-        <ion-col>Buen servicio</ion-col>
-        <ion-col>4.5</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>Mariana Luna</ion-col>
-        <ion-col>Limpieza</ion-col>
-        <ion-col>Excelente servicio</ion-col>
-        <ion-col>4.9</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>Camilo Monsalve</ion-col>
-        <ion-col>Jardineria</ion-col>
-        <ion-col>Buen servicio</ion-col>
-        <ion-col>4.6</ion-col>
+      <ion-row *ngFor="let calificacion of califications">
+        <ion-col>{{ calificacion.usuario_id }}</ion-col>
+        <ion-col>{{ calificacion.labor_id }}</ion-col>
+        <ion-col>{{ calificacion.comentario }}</ion-col>
+        <ion-col>{{ calificacion.estrellas }}</ion-col>
       </ion-row>
     </ion-grid>
   </div>

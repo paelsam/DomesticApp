@@ -14,6 +14,7 @@ import { ServiciosComponent } from './pages/servicios/servicios.component';
 import { SolicitudesComponent } from './pages/solicitudes/solicitudes.component';
 import { SolicitarWorkerComponent } from './pages/solicitar-worker/solicitar-worker.component';
 import { WorkersListComponent } from './pages/workers-list/workers-list.component';
+import { CalificarWorkerComponent } from './pages/calificar-worker/calificar-worker.component';
 
 @NgModule({
   imports: [
@@ -31,7 +32,8 @@ import { WorkersListComponent } from './pages/workers-list/workers-list.componen
     ServiciosComponent,
     SolicitudesComponent,
     SolicitarWorkerComponent,
-    WorkersListComponent
+    WorkersListComponent,
+    CalificarWorkerComponent
   ]
 })
 export class ClientPageModule {}

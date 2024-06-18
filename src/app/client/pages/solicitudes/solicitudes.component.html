@@ -17,7 +17,7 @@
     </ion-card>
   </ng-template>
 
-  <ion-list *ngIf="solicitudes.length !== 0; else noSolicitudes" [inset]="true">
+  <ion-list *ngIf="isReady; else noSolicitudes" [inset]="true">
     <ion-item *ngFor="let solicitud of solicitudes; let i = index" [button]="true" detail="false">
       <div class="unread-indicator-wrapper" slot="start">
         <ion-avatar aria-hidden="true" slot="start">
@@ -29,8 +29,14 @@
         <ion-text>{{ solicitud.trabajador?.labor }}</ion-text><br />
         <ion-note color="medium" class="ion-text-wrap">{{ solicitud.descripcion }}</ion-note><br/>
         <ion-text color="primary" class="text-estado" *ngIf="!solicitud.trabajador?.disponibilidad; else disponible">En proceso</ion-text>
+        <!-- ! Cambiar por el estado de la solicitud -->
         <ng-template #disponible>
-          <ion-text color="success" class="text-estado">Terminado</ion-text>
+          <ion-text color="success" class="text-estado">Terminado</ion-text><br/>
+          <!-- Boton para calificar solicitud (click)="calificarSolicitud(solicitud)" -->
+          <ion-button *ngIf="!solicitud.isCalificado" fill="clear" color="warning" [routerLink]="['../', 'calificar-worker', solicitud.solicitud_id]" >
+            <ion-icon slot="icon-only" name="star"></ion-icon>
+            <ion-text class="calificar-btn">Calificar</ion-text>
+          </ion-button>
         </ng-template>
       </ion-label>
       <div class="metadata-end-wrapper" slot="end">

@@ -43,6 +43,7 @@ export class SolicitudesListComponent implements OnInit {
               }
             });
         });
+        console.log( this.solicitudes )
       })
   }
 

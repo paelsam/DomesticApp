@@ -32,6 +32,16 @@
             </ion-label>
           </ion-item>
 
+          <!-- Mostrar un item con las estrellas promedio que tiene el trabajador -->
+          <ion-item>
+            <ion-label>
+              <ion-text>Calificación</ion-text><br>
+              <strong>
+                <ion-icon color="warning" name="star"></ion-icon> {{ trabajador.estrellas | number: '1.2-2'}}
+              </strong>
+            </ion-label>
+          </ion-item>
+
           <ion-item>
             <ion-label>
               <ion-text> Nombre </ion-text>

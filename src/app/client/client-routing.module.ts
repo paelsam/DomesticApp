@@ -8,6 +8,7 @@ import { SolicitudesComponent } from './pages/solicitudes/solicitudes.component'
 import { CuentaComponent } from './pages/cuenta/cuenta.component';
 import { WorkersListComponent } from './pages/workers-list/workers-list.component';
 import { SolicitarWorkerComponent } from './pages/solicitar-worker/solicitar-worker.component';
+import { CalificarWorkerComponent } from './pages/calificar-worker/calificar-worker.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
       {
         path: 'solicitar-worker/:nombre/:id',
         component: SolicitarWorkerComponent
+      },
+      {
+        path: 'calificar-worker/:id',
+        component: CalificarWorkerComponent
       },
       {
         path: 'buscar-servicios',

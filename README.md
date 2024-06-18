@@ -2,6 +2,15 @@
 
  DomesticApp es una plataforma tecnológica que conecta a los prestadores y consumidores de servicios del hogar, de manera inmediata, a través de una aplicación móvil. 
 
+
+## Requisitos
+
+- Node.js, Versión LTS (https://nodejs.org/) 
+- Ionic CLI (https://ionicframework.com/docs/intro/cli) ```npm install -g @ionic/cli```
+- Angular CLI (https://angular.io/cli) ```npm install -g @angular/cli```
+- Git (https://git-scm.com/)
+- Visual Studio Code (https://code.visualstudio.com/)
+
 ## Extensiones de Visual Studio Code recomendadas
 
 - Error Lens: https://marketplace.visualstudio.com/items?itemName=usernamehw.errorlens
